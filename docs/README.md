@@ -1,16 +1,17 @@
 最优化是一个非常实用的知识，机器学习中很多地方都涉及到最优化知识。知识并不难，但教材编的实在差劲，并不像是为求学者讲解，更像是自顾自地炫技，学起来实在费劲。因此我决定自己编一个教材。
 
 目录：
+
 1. 最优化基础概念
-	- 数学模型的一般形式
-	- 分类
+   - 数学模型的一般形式
+   - 分类
 2. 最优化的数学基础
 3. 具体问题
-	- 无约束优化问题
-	- 约束优化问题
-	- 线性规划
-	- 二次规划
-	- 罚函数法
+   - 无约束优化问题
+   - 约束优化问题
+   - 线性规划
+   - 二次规划
+   - 罚函数法
 
 
 
@@ -19,6 +20,7 @@
 ## 1.1 数学模型的一般形式
 
 最优化问题是决策问题，选择一些可以执行的策略来使得目标最优。一个最优化问题包括：
+
 1. 决策变量
 2. 一个或多个目标函数
 3. 一个由可行策略组成的集合，可由等式或者不等式刻画
@@ -26,11 +28,12 @@
 $$
 \begin{cases}\min & f(x) \\ \text { s.t. } & c_i(x)=0, i \in E=\{1,2,3 \ldots . . l\} \\ & c_i(x) \leq 0, i \in I=\{l+1, l+2, \ldots . l+m\} \\ & x \in R^n\end{cases}
 $$
+
 - **目标函数**：$f(x)$
 - **约束函数**：$c_i(x)$
 - **可行域**：$D=\left\{x \mid c_i(x)=0, i \in E ; c_i(x) \leq 0, i \in I, x \in R^n\right\}$
-	- **无约束**：$D=R^n$，即x是自由变量
-	- **有约束**：$D\subset R^n$
+  - **无约束**：$D=R^n$，即x是自由变量
+  - **有约束**：$D\subset R^n$
 - **可行点**：属于D的点
 - $s.t.$  =  subject to   受约束于...
 
@@ -40,21 +43,21 @@ $$
 
 1. 根据可行域划分：约束与无约束
 2. 根据函数性质划分：
-	1. 线性规划：目标函数和约束函数都是线性的
-	2. 非线性规划：存在非线性的
-		- 二次规划：目标函数是二次函数（不是必须为**一元**二次），约束函数是线性的
+   1. 线性规划：目标函数和约束函数都是线性的
+   2. 非线性规划：存在非线性的
+      - 二次规划：目标函数是二次函数（不是必须为**一元**二次），约束函数是线性的
 3. 根据可行域性质划分：
-	1. 连续最优化：可行域内有无数且可连续变化的点
-	2. 离散最优化：可行域内点是有限个
-		- 整数规划：变量均为整数
-		- 混合整数规划：变量一部分为整数，一部分连续变化
+   1. 连续最优化：可行域内有无数且可连续变化的点
+   2. 离散最优化：可行域内点是有限个
+      - 整数规划：变量均为整数
+      - 混合整数规划：变量一部分为整数，一部分连续变化
 4. 根据目标函数性质划分：
-	- 多目标规划问题：目标函数为向量函数
-	- 单目标规划问题：目标函数为数量函数
+   - 多目标规划问题：目标函数为向量函数
+   - 单目标规划问题：目标函数为数量函数
 5. 根据规划问题有关信息的确定性划分： 
-	- 随机规划：目标函数或约束函数具有随机性
-	- 模糊规划：优化问题的变量（函数）具有模糊性
-	- 确定规划：目标函数和可行域都是确定的
+   - 随机规划：目标函数或约束函数具有随机性
+   - 模糊规划：优化问题的变量（函数）具有模糊性
+   - 确定规划：目标函数和可行域都是确定的
 
 
 
@@ -75,13 +78,16 @@ $$
 > **内积 = 数量积 = 点积**
 
 ##### 向量角度
+
 $$
 \boldsymbol{a}\cdot \boldsymbol{b}=\left| \boldsymbol{a} \right|\left| \boldsymbol{b} \right|\cos \theta
 $$
+
 - $\theta =\widehat{\boldsymbol{a},\boldsymbol{b}}$，表示向量间的夹角
 - 从几何角度理解：一个向量到另一个向量的投影
 
 ##### 线代角度
+
 $$
 \boldsymbol{a}=\left[ \begin{matrix}
 	a_1&		a_2&		\cdots&		a_n\\
@@ -113,6 +119,7 @@ $$
 ##### 几何理解
 
 若给定任意一个正定矩阵 $A\in R^{n\times n}$ 和一个非零向量 $x\in R^n$ ，则两者相乘得到的向量 $y=Ax\in R^n$ 与向量 $x$ 的夹角恒小于90°（半正定是小于等于90°）【等价于 $\boldsymbol{x}^{\mathrm{T}}\boldsymbol{Ax}>0$ 】<img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230503160141.png" style="zoom: 67%;" />
+
 > 两向量间的夹角怎么求？——等于两向量的内积 除以 两向量的二次范数的乘积（由向量的内积公式可推出）
 
 
@@ -182,6 +189,7 @@ $$\frac{\partial f}{\partial l}\mid_{x_0,y_0}^{}=\mathbf{\nabla }f\left( x_0,y_0
 $$\nabla^2 f(x)=\left(\begin{array}{cccc}\frac{\partial^2 f(x)}{\partial^2 x_1} & \frac{\partial^2 f(x)}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f(x)}{\partial x_1 \partial x_n} \\ \frac{\partial^2 f(x)}{\partial x_2 \partial x_1} & \frac{\partial^2 f(x)}{\partial^2 x_2} & \cdots & \frac{\partial^2 f(x)}{\partial x_2 \partial x_n} \\ \vdots & \vdots & \ddots & \vdots \\ \frac{\partial^2 f(x)}{\partial x_n \partial x_1} & \frac{\partial^2 f(x)}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2 f(x)}{\partial^2 x_n}\end{array}\right)$$
 
 假设函数f(x)在**x0**处有二阶连续偏导，若
+
 - 在**x0**处，梯度(向量)等于0<img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230519143547.png" style="zoom: 67%;" />
 - 且在**x0**处，海森矩阵正定
 
@@ -195,9 +203,11 @@ $$\nabla^2 f(x)=\left(\begin{array}{cccc}\frac{\partial^2 f(x)}{\partial^2 x_1} 
 >泰勒多项式也叫泰勒展开式，泰勒公式，*近似多项式*等
 
 ##### 通俗理解
+
 泰勒展开式是用一个函数在某点的信息，描述其附近取值的公式。如果函数足够平滑，在已知函数在某一点的各阶导数值的情况下，泰勒公式可以利用这些导数值来做系数，构建一个多项式近似函数，求得在这一点的邻域中的值。
 
 ##### 定义
+
 > 注意区分**二元**泰勒展开式与**二阶**泰勒展开式
 
 ① **单变量函数的泰勒展开式定义**：如果函数 f(x) 在含有 x0 的某个开区间 (a,b) 内具有直到 (n+1) 阶导数，则对任意的 x 属于 (a,b) ，有
@@ -219,13 +229,14 @@ $$
 
 - 仿射集的概念：一个集合是仿射集，当且仅当集合中经过任意两点的**直线**上的点仍在集合中，即对任意 $x,y\in S,0\leqslant \theta \leqslant 1$，有 $\theta x+\left( 1-\theta \right) y\in S$ 
 - 凸集的概念：一个集合是凸集当且仅当该集合中任意两点的**连线上的所有点（即线段)** 仍然属于该集合，即对任意 $x,y\in S,\theta \in R$，有 $\theta x+\left( 1-\theta \right) y\in S$ 
+
 > 连接$x_1$和$x_2$的线段上的任意一点$x$，都可以表示为：$x = \lambda x_1 + (1 - \lambda) x_2$，其中$\lambda \in [0,1]$
-> 
+>
 > 这是因为，连接$x_1$和$x_2$的线段上包含了$x_1$和$x_2$这两个端点，当$\lambda=0$时，$x=(1-\lambda)x_2 = x_2$；当$\lambda=1$时，$x= \lambda x_1 = x_1$。则当$\lambda \in (0,1)$时，$x$表示的是$x_1$与$x_2$之间的某个中间点。
 
 - 凸集的性质： 设$C_1,C_2\subset R^n$是凸集，α属于R，则
-	1. $C_1\cap C_2=\left\{ x|x\in C_1,x\in C_2 \right\}$是凸集
-	2. $C_1\pm C_2=\left\{ x\pm y|x\in C_1,y\in C_2 \right\}$是凸集
+  1. $C_1\cap C_2=\left\{ x|x\in C_1,x\in C_2 \right\}$是凸集
+  2. $C_1\pm C_2=\left\{ x\pm y|x\in C_1,y\in C_2 \right\}$是凸集
 - 仿射集对集合的要求包括了凸集对集合的要求，因此可以说仿射集比凸集要求更高。**仿射集一定是凸集**。
 
 
@@ -612,16 +623,16 @@ $$
 **二次规划问题（QP问题）的解法**：
 
 1. 等式约束二次规划问题
-   
-1. KKT法：约束非线性规划的一般方法
-   
-       <img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230522175445.png" style="zoom:50%;" />
-   
-   2. <img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230522175853.png" style="zoom:50%;" />
-   
-2. 变量消除法（高中方法）
 
-3. **不等式约束二次规划问题**
+2. KKT法：约束非线性规划的一般方法
+
+       <img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230522175445.png" style="zoom:50%;" />
+
+   2. <img src="https://cdn.jsdelivr.net/gh/zlhhhh8901/hello-world@main/img/Pasted%20image%2020230522175853.png" style="zoom:50%;" />
+
+3. 变量消除法（高中方法）
+
+4. **不等式约束二次规划问题**
 
 - 凸二次规划的有效集法（也叫积极集法）
 
